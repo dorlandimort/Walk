@@ -8,13 +8,10 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="whiteTheme" parent="">
+    <style name="whiteTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="colorPrimary">@color/white</item>
         <item name="colorPrimaryDark">@color/white</item>
         <item name="colorAccent">@color/blueAccent</item>
-        <item name="android:textColorPrimary">@color/black</item>
-        <item name="statusBarColor">@color/black</item>
-
     </style>
 
 </resources>
