@@ -67,7 +67,6 @@ public class StepService extends Service implements LocationListener {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this,
                 Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-
             return;
         }
         this.lom.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 10, this);
@@ -80,8 +79,8 @@ public class StepService extends Service implements LocationListener {
         Toast.makeText(getApplicationContext(),
                 "Latitud: " + lat + " Longitud: " + lng, Toast.LENGTH_LONG
         ).show();
-        
-        /*Point point = new Point();
+
+        Point point = new Point();
         point.setLat(lat);
         point.setLn(lng);
 
@@ -90,7 +89,7 @@ public class StepService extends Service implements LocationListener {
         String date = simpleDateFormat.format(new Date());
         Log.e("", date);
         point.setFecha(date);
-*/
+        this.setPoint(point);
     }
 
     private void setPoint(Point point) {
@@ -141,7 +140,7 @@ public class StepService extends Service implements LocationListener {
                 json.put("hora1", this.pointA.getFecha());
                 json.put("hora2", this.pointB.getFecha());
 
-                URL url = new URL(Utilities.SERVER_URL);
+                URL url = new URL(Utilities.SERVER_URL + "bitacora/submit");
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setReadTimeout(10000);
                 conn.setReadTimeout(10000);
@@ -202,14 +201,14 @@ public class StepService extends Service implements LocationListener {
                     sp.edit().putString("totalCaloriasHoy", json.getString("totalCaloriasHoy")).commit();
                     sp.edit().putString("totalPasosSemana", json.getString("totalPasosSemana")).commit();
                     sp.edit().putString("totalCaloriasSemana", json.getString("totalCaloriasSemana")).commit();
+                    Toast.makeText(getApplicationContext(), json.toString(), Toast.LENGTH_SHORT);
                     /* guardar el historial*/
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
 
             }
-            point1 = null;
-            point2 = null;
+            point1 = point2;
         }
     }
 }

@@ -34,6 +34,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 import mx.edu.ulsaoaxaca.walk.R;
+import mx.edu.ulsaoaxaca.walk.Utilities;
 import mx.edu.ulsaoaxaca.walk.services.StepService;
 
 
@@ -62,7 +63,7 @@ public class LoginActivity extends AppCompatActivity {
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             window.setStatusBarColor(Color.BLACK);
         }
-        startService(new Intent(this, StepService.class));
+
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
         mPasswordView = (EditText) findViewById(R.id.password);
         mLoginFormView = findViewById(R.id.login_form);
@@ -170,7 +171,7 @@ public class LoginActivity extends AppCompatActivity {
             StringBuilder result = new StringBuilder();
 
             try {
-                URL url = new URL(BASE_URL + "persona/auth");
+                URL url = new URL(Utilities.SERVER_URL + "persona/auth");
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setRequestMethod("POST");
                 conn.setRequestProperty("Content-Type", "plain/text");
@@ -234,6 +235,7 @@ public class LoginActivity extends AppCompatActivity {
                     sp.edit().putString("sexo", persona.getString("sexo")).commit();
 
                     Intent intent = new Intent(LoginActivity.this, DetalleActivity.class);
+                    startService(new Intent(LoginActivity.this, StepService.class));
                     startActivity(intent);
                 } catch (JSONException e) {
                     e.printStackTrace();
