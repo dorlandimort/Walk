@@ -5,13 +5,18 @@ import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
 import android.app.ActionBar;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.AsyncTask;
 
 import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
@@ -29,6 +34,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 import mx.edu.ulsaoaxaca.walk.R;
+import mx.edu.ulsaoaxaca.walk.services.StepService;
 
 
 public class LoginActivity extends AppCompatActivity {
@@ -51,7 +57,12 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         // Set up the login form.
 
-
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = getWindow();
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.setStatusBarColor(Color.BLACK);
+        }
+        startService(new Intent(this, StepService.class));
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
         mPasswordView = (EditText) findViewById(R.id.password);
         mLoginFormView = findViewById(R.id.login_form);
@@ -209,9 +220,25 @@ public class LoginActivity extends AppCompatActivity {
             showProgress(false);
 
             if (! result.isEmpty()) {
-                System.out.println(result);
-                Intent intent = new Intent(LoginActivity.this, DetalleActivity.class);
-                startActivity(intent);
+                Log.d("", result);
+
+                try {
+                    JSONObject json = new JSONObject(result);
+                    JSONObject persona = json.getJSONObject("persona");
+                    SharedPreferences sp = getSharedPreferences("persona", 0);
+                    sp.edit().putString("id", persona.getString("id")).commit();
+                    sp.edit().putString("peso", persona.getString("peso")).commit();
+                    sp.edit().putString("nombre", persona.getString("nombre")).commit();
+                    sp.edit().putString("imc", persona.getString("imc")).commit();
+                    sp.edit().putString("estatura", persona.getString("estatura")).commit();
+                    sp.edit().putString("sexo", persona.getString("sexo")).commit();
+
+                    Intent intent = new Intent(LoginActivity.this, DetalleActivity.class);
+                    startActivity(intent);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
             } else {
                 mPasswordView.setError(getString(R.string.error_incorrect_password));
                 mPasswordView.requestFocus();
