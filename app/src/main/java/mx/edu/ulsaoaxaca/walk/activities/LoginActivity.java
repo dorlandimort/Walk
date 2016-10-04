@@ -233,8 +233,10 @@ public class LoginActivity extends AppCompatActivity {
                     sp.edit().putString("imc", persona.getString("imc")).commit();
                     sp.edit().putString("estatura", persona.getString("estatura")).commit();
                     sp.edit().putString("sexo", persona.getString("sexo")).commit();
+                    sp.edit().putString("pasos", json.getString("pasos")).commit();
+                    sp.edit().putString("calorias", json.getString("calorias")).commit();
 
-                    Intent intent = new Intent(LoginActivity.this, DetalleActivity.class);
+                    Intent intent = new Intent(LoginActivity.this, InicioActivity.class);
                     startService(new Intent(LoginActivity.this, StepService.class));
                     startActivity(intent);
                 } catch (JSONException e) {

@@ -28,15 +28,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.DetalleActivity" />
+        <activity android:name=".activities.DetalleActivity"></activity>
 
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
-        <service
-            android:name=".services.StepService"
-            android:exported="false"></service>
+        <activity android:name=".activities.InicioActivity"></activity>
     </application>
 
 </manifest>

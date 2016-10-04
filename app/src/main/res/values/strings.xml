@@ -15,4 +15,11 @@
     </string>
     <string name="grant_permissions">Dar permisos</string>
     <string name="please_grant_permissions">Por favor, acepte los permisos</string>
+    <string name="pasos">Pasos</string>
+    <string name="calorias">Calorias</string>
+    <string name="tu_dieta">Tu dieta</string>
+    <string name="desayuno">Desayuno</string>
+    <string name="comida">Comida</string>
+    <string name="cena">Cena</string>
+
 </resources>
