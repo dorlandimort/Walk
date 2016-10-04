@@ -21,5 +21,14 @@
     <string name="desayuno">Desayuno</string>
     <string name="comida">Comida</string>
     <string name="cena">Cena</string>
+    <string name="nombre">Nombre</string>
+    <string name="usuario">Usuario</string>
+    <string name="pass">Password</string>
+    <string name="peso">Peso</string>
+    <string name="estatura">Estatura</string>
+    <string name="edad">Edad</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="aceptar">Aceptar</string>
+    <string name="registro">Registro</string>
 
 </resources>
