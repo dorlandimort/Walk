@@ -7,4 +7,7 @@
     <color name="slide2Dark">#00796B</color>
     <color name="slide3Primary">#5D4037</color>
     <color name="slide3Dark">#5D4037</color>
+    <color name="white">#FFFFFF</color>
+    <color name="blueAccent">#448AFF</color>
+    <color name="black">#212121</color>
 </resources>
