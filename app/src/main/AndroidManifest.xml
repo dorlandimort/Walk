@@ -39,7 +39,9 @@
 
         <service
             android:name=".services.StepService"
-            android:exported="false"></service>
+            android:exported="false" />
+
+        <activity android:name=".activities.HistorialActivity"></activity>
     </application>
 
 </manifest>

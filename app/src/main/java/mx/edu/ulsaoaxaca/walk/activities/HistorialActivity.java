@@ -2,45 +2,29 @@ package mx.edu.ulsaoaxaca.walk.activities;
 
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
-import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
-import java.util.Random;
-import android.app.Activity;
-import android.util.Log;
-
-import com.jjoe64.graphview.DefaultLabelFormatter;
-import com.jjoe64.graphview.GraphView;
-import com.jjoe64.graphview.Viewport;
-import com.jjoe64.graphview.helper.DateAsXAxisLabelFormatter;
-import com.jjoe64.graphview.series.DataPoint;
-import com.jjoe64.graphview.series.LineGraphSeries;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import im.dacer.androidcharts.LineView;
 import mx.edu.ulsaoaxaca.walk.R;
 import mx.edu.ulsaoaxaca.walk.Utilities;
 
-
-public class GraphicActivity extends Activity {
-
+public class HistorialActivity extends AppCompatActivity {
 
     private LineView lineView;
     @Override
@@ -145,5 +129,4 @@ public class GraphicActivity extends Activity {
             }
         }
     }
-
 }

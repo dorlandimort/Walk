@@ -259,7 +259,7 @@ public class LoginActivity extends AppCompatActivity {
                     Bundle b = new Bundle();
                     b.putSerializable("dieta", dieta);
 
-                    Intent intent = new Intent(LoginActivity.this, GraphicActivity.class);
+                    Intent intent = new Intent(LoginActivity.this, HistorialActivity.class);
                     intent.putExtras(b);
                     startService(new Intent(LoginActivity.this, StepService.class));
                     startActivity(intent);
