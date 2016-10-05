@@ -28,38 +28,52 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/nombre"
+        android:id="@+id/nombre"
         android:layout_weight="1"
         />
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/usuario"
+        android:id="@+id/usuario"
         android:layout_weight="1"
         />
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/pass"
+        android:id="@+id/password"
         android:layout_weight="1"
         />
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/peso"
+        android:id="@+id/peso"
         android:layout_weight="1"
         />
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/estatura"
+        android:id="@+id/estatura"
         android:layout_weight="1"
         />
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/edad"
+        android:id="@+id/edad"
         android:layout_weight="1"
         />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="sexo"
+            android:id="@+id/sexos"
+            android:layout_weight="1"
+            />
     </LinearLayout>
 
     <LinearLayout
