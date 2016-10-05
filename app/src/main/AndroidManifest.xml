@@ -12,7 +12,6 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/whiteTheme">
@@ -35,7 +34,12 @@
             android:value="@integer/google_play_services_version" />
 
         <activity android:name=".activities.InicioActivity" />
-        <activity android:name=".activities.RegistroActivity"></activity>
+        <activity android:name=".activities.RegistroActivity" />
+        <activity android:name=".activities.GraphicActivity" />
+
+        <service
+            android:name=".services.StepService"
+            android:exported="false"></service>
     </application>
 
 </manifest>

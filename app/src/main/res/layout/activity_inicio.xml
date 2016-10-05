@@ -17,9 +17,9 @@
         android:weightSum="10">
 
         <TextView
-            android:id="@+id/txtPasos"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:layout_width="wrap_content"
-            android:layout_height="28dp"
+            android:layout_height="wrap_content"
             android:text="@string/pasos"
             android:layout_weight="5.97"
             android:textStyle="normal"
@@ -27,9 +27,9 @@
             android:width="50dp" />
 
         <TextView
-            android:id="@+id/txtCalorias"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:layout_width="wrap_content"
-            android:layout_height="28dp"
+            android:layout_height="wrap_content"
             android:text="@string/calorias"
             android:textSize="30dp"
             android:layout_weight="5" />
@@ -47,20 +47,25 @@
         android:weightSum="10">
 
         <TextView
+            android:id="@+id/txtPasos"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
             android:layout_width="wrap_content"
-            android:layout_height="28dp"
-            android:text="hola"
+            android:layout_height="wrap_content"
             android:layout_weight="5.97"
             android:textStyle="normal"
             android:textSize="30dp"
             android:width="50dp" />
 
         <TextView
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:id="@+id/txtCalorias"
             android:layout_width="wrap_content"
-            android:layout_height="28dp"
-            android:text="hola"
-            android:textSize="30dp"
-            android:layout_weight="5" />
+            android:layout_height="wrap_content"
+            android:textSize="30dp">
+
+        </TextView>
+
+
 
 
 

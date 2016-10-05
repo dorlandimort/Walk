@@ -21,6 +21,8 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import com.google.android.gms.common.api.GoogleApiClient;
+
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import java.io.BufferedInputStream;
@@ -35,6 +37,8 @@ import java.net.URL;
 
 import mx.edu.ulsaoaxaca.walk.R;
 import mx.edu.ulsaoaxaca.walk.Utilities;
+import mx.edu.ulsaoaxaca.walk.pojos.Comida;
+import mx.edu.ulsaoaxaca.walk.pojos.Dieta;
 import mx.edu.ulsaoaxaca.walk.services.StepService;
 
 
@@ -73,6 +77,11 @@ public class LoginActivity extends AppCompatActivity {
 
     public void login(View view) {
         this.attemptLogin();
+    }
+
+    public void registro(View view) {
+        Intent intent = new Intent(this, RegistroActivity.class);
+        startActivity(intent);
     }
 
     private void attemptLogin() {
@@ -236,7 +245,22 @@ public class LoginActivity extends AppCompatActivity {
                     sp.edit().putString("pasos", json.getString("pasos")).commit();
                     sp.edit().putString("calorias", json.getString("calorias")).commit();
 
-                    Intent intent = new Intent(LoginActivity.this, InicioActivity.class);
+                    Dieta dieta = new Dieta();
+                    // crear adapter de dieta
+                    JSONObject di = persona.getJSONObject("dieta");
+                    JSONArray array = di.getJSONArray("insumos");
+                    for(int i = 0; i < array.length(); i++) {
+                        JSONObject d = array.getJSONObject(i);
+                        Comida comida = new Comida();
+                        comida.setNombre(d.getString("insumo"));
+                        comida.setCantidad(d.getString("cantidad"));
+                        dieta.getComidas().add(comida);
+                    }
+                    Bundle b = new Bundle();
+                    b.putSerializable("dieta", dieta);
+
+                    Intent intent = new Intent(LoginActivity.this, GraphicActivity.class);
+                    intent.putExtras(b);
                     startService(new Intent(LoginActivity.this, StepService.class));
                     startActivity(intent);
                 } catch (JSONException e) {
@@ -244,6 +268,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
 
             } else {
+                Log.d("error", "error");
                 mPasswordView.setError(getString(R.string.error_incorrect_password));
                 mPasswordView.requestFocus();
             }

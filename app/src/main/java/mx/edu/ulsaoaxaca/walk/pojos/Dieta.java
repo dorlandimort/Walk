@@ -1,6 +1,7 @@
 package mx.edu.ulsaoaxaca.walk.pojos;
 
 import java.io.Serializable;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -8,6 +9,10 @@ import java.util.List;
  */
 public class Dieta implements Serializable {
     private List<Comida> comidas;
+
+    public Dieta() {
+        comidas = new LinkedList<>();
+    }
 
 
     public List<Comida> getComidas() {

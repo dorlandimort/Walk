@@ -20,8 +20,8 @@ public class DietaAdapter extends ArrayAdapter<Comida> {
     private Activity context;
     private List<Comida> comidas;
 
-    public DietaAdapter(Activity context, int resource, List<Comida> objects) {
-        super(context, resource, objects);
+    public DietaAdapter(Activity context,  List<Comida> objects) {
+        super(context, 0, objects);
         this.context = context;
         this.comidas = objects;
     }
